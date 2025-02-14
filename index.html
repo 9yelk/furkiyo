@@ -8,17 +8,47 @@
         body {
             text-align: center;
             font-family: 'Press Start 2P', cursive;
-            background-color: #ffe6f2;
+            background-color: #e6f7ff;
             margin: 0;
             padding: 0;
+            overflow: hidden;
             image-rendering: pixelated;
         }
+        .gift-wrap {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: #0066cc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            transition: all 1.5s ease-in-out;
+        }
+        .ribbon {
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            background: red;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .bow {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: red;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
         .container {
+            display: none;
             margin-top: 50px;
         }
         h1 {
             font-size: 2rem;
-            color: #ff66b2;
+            color: #0066cc;
             animation: bounce 1.5s infinite;
         }
         @keyframes bounce {
@@ -36,8 +66,8 @@
             image-rendering: pixelated;
         }
         .btn {
-            background-color: #ff99cc;
-            border: 3px solid #ff66b2;
+            background-color: #3399ff;
+            border: 3px solid #0066cc;
             padding: 10px 20px;
             font-size: 1rem;
             color: white;
@@ -45,20 +75,30 @@
             cursor: pointer;
             margin-top: 20px;
             font-family: 'Press Start 2P', cursive;
-            text-shadow: 2px 2px #ff3366;
+            text-shadow: 2px 2px #004080;
         }
         .btn:hover {
-            background-color: #ff66b2;
+            background-color: #0066cc;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Happy Birthday, Little Bro! 🎉🎂</h1>
-        <img class="cake" src="https://cdn.pixabay.com/photo/2016/04/01/09/48/birthday-cake-1297071_1280.png" alt="Birthday Cake">
-        <p>Wishing you all the happiness and fun on your special day!</p>
+    <div class="gift-wrap" id="giftWrap">
+        <div class="ribbon"></div>
+        <div class="bow"></div>
+    </div>
+    <div class="container" id="content">
+        <h1>HAPPY BDAY FURKYYYY </h1>
+        <img class="cake" src="/mnt/data/A_cute_pixel-art_birthday_cake_with_white_and_blue.png" alt="Birthday Cake">
+        <p>FINALLY 10, may Allah grant you a long, healthy, and righteous life upon the deen, ameen!!</p>
         <button class="btn" onclick="alert('Have an amazing birthday! 🎉')">Click for a Surprise!</button>
     </div>
+    <script>
+        setTimeout(() => {
+            document.getElementById("giftWrap").style.transform = "scale(0)";
+            document.getElementById("content").style.display = "block";
+        }, 2000);
+    </script>
 </body>
 </html>
