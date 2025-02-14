@@ -23,7 +23,6 @@
             justify-content: center;
             align-items: center;
             z-index: 10;
-            transition: all 1.5s ease-in-out;
             flex-direction: column;
         }
         .ribbon {
@@ -35,19 +34,18 @@
                 #cce6ff 0px, #cce6ff 10px,
                 #99ccff 10px, #99ccff 20px
             );
-            top: 50%; /* Keeps it aligned with the bow */
+            top: 50%;
             transform: translateY(-50%);
             image-rendering: pixelated;
             z-index: 10; /* Behind the bow */
         }
         .bow-container {
             position: absolute;
-            top: 50%; /* Same Y position as ribbon */
+            top: 50%;
             left: 50%;
-            width: 300px;
+            width: 150px; /* Restored original size */
             height: auto;
             transform: translate(-50%, -50%);
-            display: flex;
             z-index: 20; /* Higher than ribbon */
         }
         .container {
@@ -68,7 +66,7 @@
             }
         }
         .cake {
-            width: 600px; /* Enlarged cake size */
+            width: 600px; /* Large cake */
             height: auto;
             margin-top: 20px;
             image-rendering: pixelated;
@@ -87,6 +85,10 @@
         }
         .btn:hover {
             background-color: #0066cc;
+        }
+        @keyframes parting {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50vw); }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -133,10 +135,15 @@
         }
 
         setTimeout(() => {
-            document.getElementById("giftWrap").style.transition = "transform 1.5s ease-in-out";
-            document.getElementById("giftWrap").style.transform = "translateX(-100vw) translateY(-100vh)";
+            let giftWrap = document.getElementById("giftWrap");
+
+            // Split animation
+            giftWrap.style.display = "flex";
+            giftWrap.style.transition = "transform 1.5s ease-in-out";
+            giftWrap.style.transform = "translateX(-100vw)"; // Slide both halves out
+
             setTimeout(() => {
-                document.getElementById("giftWrap").style.display = "none";
+                giftWrap.style.display = "none";
                 document.getElementById("content").style.display = "block";
             }, 1500);
         }, 2000);
