@@ -18,7 +18,7 @@
             position: fixed;
             width: 100%;
             height: 100%;
-            background-color: #4a90e2; /* Darker blue background */
+            background-color: #4a90e2;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -29,7 +29,7 @@
         .ribbon {
             position: absolute;
             width: 100%;
-            height: 50px; /* Thicker ribbon */
+            height: 50px;
             background: repeating-linear-gradient(
                 90deg,
                 #cce6ff 0px, #cce6ff 10px,
@@ -41,12 +41,12 @@
         }
         .bow {
             position: absolute;
-            width: 1200px; /* 8x larger */
+            width: 1200px;
             height: auto;
-            top: 40%; /* Positioned above the line */
+            top: 40%;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 20; /* Ensure it appears above the ribbon */
+            z-index: 20;
         }
         .container {
             display: none;
@@ -66,7 +66,7 @@
             }
         }
         .cake {
-            width: 600px; /* 4x larger */
+            width: 1500px; /* 10x larger */
             height: auto;
             margin-top: 20px;
             image-rendering: pixelated;
@@ -88,6 +88,7 @@
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2"></script>
 </head>
 <body>
     <div class="gift-wrap" id="giftWrap">
@@ -99,13 +100,21 @@
         <img class="cake" src="bluecaket.png" alt="Birthday Cake">
         <p>FINALLY 10, may Allah grant you a long, healthy, and righteous life upon the deen, ameen!! </p>
         <p>We love you so much wallah. </p>
-        <button class="btn" onclick="alert('Have an amazing birthday! 🎉')">Click for a Surprise!</button>
+        <button class="btn" onclick="startConfetti()">Click for a Surprise!</button>
     </div>
     <script>
         setTimeout(() => {
             document.getElementById("giftWrap").style.transform = "scale(0)";
             document.getElementById("content").style.display = "block";
         }, 2000);
+
+        function startConfetti() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
     </script>
 </body>
 </html>
