@@ -41,11 +41,11 @@
         }
         .bow {
             position: absolute;
-            width: 1200px;
+            width: 300px; /* Normal-sized bow */
             height: auto;
-            top: 40%;
+            top: calc(50% - 25px); /* Moves bow between the two lines */
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
             z-index: 20;
         }
         .container {
@@ -64,7 +64,7 @@
             50% {
                 transform: translateY(-10px);
             }
-       
+        }
         .cake {
             width: 90vw;
             max-width: 1000px;
@@ -93,32 +93,20 @@
 </head>
 <body>
     <div class="gift-wrap" id="giftWrap">
-        <div class="left-half" id="leftHalf">
-            <img class="bow-left" id="bowLeft" src="bow-left.png" alt="Left Bow">
-        </div>
-        <div class="right-half" id="rightHalf">
-            <img class="bow-right" id="bowRight" src="bow-right.png" alt="Right Bow">
-        </div>
         <div class="ribbon"></div>
+        <img class="bow" src="bowiee.png" alt="Bow">
     </div>
     <div class="container" id="content">
         <h1>HAPPY BDAY FURKYYYY</h1>
         <img class="cake" src="bluecaket.png" alt="Birthday Cake">
         <p>FINALLY 10, may Allah grant you a long, healthy, and righteous life upon the deen, ameen!! </p>
         <p>We love you so much wallah. </p>
-        <button class="btn" onclick="startConfetti()">Click for confetti!</button>
+        <button class="btn" onclick="startConfetti()">Click for a Surprise!</button>
     </div>
     <script>
         setTimeout(() => {
-            document.getElementById("leftHalf").style.transform = "translateX(-100%)"; // Left side moves left
-            document.getElementById("rightHalf").style.transform = "translateX(100%)"; // Right side moves right
-            document.getElementById("bowLeft").style.transform = "translateX(-100%)"; // Bow left moves left
-            document.getElementById("bowRight").style.transform = "translateX(100%)"; // Bow right moves right
-
-            setTimeout(() => {
-                document.getElementById("giftWrap").style.display = "none";
-                document.getElementById("content").style.display = "block";
-            }, 1500);
+            document.getElementById("giftWrap").style.transform = "scale(0)";
+            document.getElementById("content").style.display = "block";
         }, 2000);
 
         function startConfetti() {
