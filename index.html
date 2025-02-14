@@ -43,10 +43,10 @@
             position: absolute;
             width: 300px; /* Normal-sized bow */
             height: auto;
-            top: calc(50% - 25px); /* Moves bow between the two lines */
+            top: calc(50% - 100px); /* Moves bow above the ribbon */
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 20;
+            z-index: 20; /* Ensures bow is above ribbon */
         }
         .container {
             display: none;
@@ -67,7 +67,7 @@
         }
         .cake {
             width: 90vw;
-            max-width: 1000px;
+            max-width: 900px;
             height: auto;
             margin-top: 20px;
             image-rendering: pixelated;
@@ -95,13 +95,14 @@
     <div class="gift-wrap" id="giftWrap">
         <div class="ribbon"></div>
         <img class="bow" src="bowiee.png" alt="Bow">
-    </div>
+   </div>
     <div class="container" id="content">
         <h1>HAPPY BDAY FURKYYYY</h1>
         <img class="cake" src="bluecaket.png" alt="Birthday Cake">
         <p>FINALLY 10, may Allah grant you a long, healthy, and righteous life upon the deen, ameen!! </p>
         <p>We love you so much wallah. </p>
-        <button class="btn" onclick="startConfetti()">Click for a Surprise!</button>
+        <p>AND I MIST U SO MUCH FURCUTIE, WE'LL DEF TALK SOMETIME SOON, TAKE CARE VE SEN TATLICIK :)) </p>
+        <button class="btn" onclick="startConfetti()">Click for confetti!</button>
     </div>
     <script>
         setTimeout(() => {
