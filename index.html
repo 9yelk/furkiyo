@@ -41,11 +41,12 @@
         }
         .bow {
             position: absolute;
-            width: 600px; /* Increased size */
+            width: 1200px; /* 8x larger */
             height: auto;
-            top: 50%;
+            top: 40%; /* Positioned above the line */
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
+            z-index: 20; /* Ensure it appears above the ribbon */
         }
         .container {
             display: none;
@@ -65,7 +66,7 @@
             }
         }
         .cake {
-            width: 150px;
+            width: 600px; /* 4x larger */
             height: auto;
             margin-top: 20px;
             image-rendering: pixelated;
