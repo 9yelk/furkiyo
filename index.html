@@ -18,7 +18,7 @@
             position: fixed;
             width: 100%;
             height: 100%;
-            background-color: #b3daff;
+            background-color: #4a90e2; /* Darker blue background */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -29,23 +29,23 @@
         .ribbon {
             position: absolute;
             width: 100%;
-            height: 30px;
-            background: linear-gradient(to right, #cce6ff, #99ccff);
+            height: 50px; /* Thicker ribbon */
+            background: repeating-linear-gradient(
+                90deg,
+                #cce6ff 0px, #cce6ff 10px,
+                #99ccff 10px, #99ccff 20px
+            );
             top: 50%;
             transform: translateY(-50%);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
+            image-rendering: pixelated;
         }
         .bow {
             position: absolute;
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(to right, #cce6ff, #99ccff);
+            width: 150px;
+            height: auto;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) rotate(45deg);
-            border-radius: 50%;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transform: translate(-50%, -50%);
         }
         .container {
             display: none;
@@ -91,12 +91,13 @@
 <body>
     <div class="gift-wrap" id="giftWrap">
         <div class="ribbon"></div>
-        <div class="bow"></div>
+        <img class="bow" src="bowiee.png" alt="Bow">
     </div>
     <div class="container" id="content">
         <h1>HAPPY BDAY FURKYYYY</h1>
         <img class="cake" src="bluecaket.png" alt="Birthday Cake">
-        <p>FINALLY 10, may Allah grant you a long, healthy, and righteous life upon the deen, ameen!! We love you so much wallah.</p>
+        <p>FINALLY 10, may Allah grant you a long, healthy, and righteous life upon the deen, ameen!! </p>
+        <p>We love you so much wallah. </p>
         <button class="btn" onclick="alert('Have an amazing birthday! 🎉')">Click for a Surprise!</button>
     </div>
     <script>
