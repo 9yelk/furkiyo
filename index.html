@@ -35,18 +35,19 @@
                 #cce6ff 0px, #cce6ff 10px,
                 #99ccff 10px, #99ccff 20px
             );
-            top: 50%;
+            top: calc(50% + 50px); /* Moves ribbon down below the bow */
             transform: translateY(-50%);
             image-rendering: pixelated;
+            z-index: 10; /* Ribbon behind the bow */
         }
         .bow {
             position: absolute;
             width: 600px; /* Bow is now 2x bigger */
             height: auto;
-            top: calc(50% - 150px); /* Moves bow above the ribbon */
+            top: calc(50% - 100px); /* Moves the bow above the center of the ribbon */
             left: 50%;
             transform: translate(-50%, -50%); /* Centers the bow horizontally and vertically */
-            z-index: 20; /* Ensures bow is above ribbon */
+            z-index: 20; /* Ensures the bow is on top of the ribbon */
         }
         .container {
             display: none;
@@ -93,8 +94,8 @@
 </head>
 <body>
     <div class="gift-wrap" id="giftWrap">
-        <div class="ribbon"></div>
         <img class="bow" src="bowiee.png" alt="Bow">
+        <div class="ribbon"></div>
     </div>
     <div class="container" id="content">
         <h1>HAPPY BDAY FURKYYYY</h1>
