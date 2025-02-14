@@ -32,6 +32,9 @@
             top: 0;
             background-color: #4a90e2;
             transition: transform 1.5s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .left-half { left: 0; }
         .right-half { right: 0; }
@@ -49,16 +52,28 @@
             transform: translateY(-50%);
             image-rendering: pixelated;
         }
-        .bow {
+        .bow-container {
             position: absolute;
-            width: 300px;
-            height: auto;
             top: calc(50% - 75px); /* Centers bow between ribbons */
             left: 50%;
-            transform: translate(-50%, 0);
+            width: 300px;
+            height: auto;
+            transform: translateX(-50%);
+            display: flex;
             z-index: 20;
-            transition: opacity 1s ease-in-out;
         }
+        .bow-left, .bow-right {
+            width: 50%;
+            height: auto;
+            transition: transform 1.5s ease-in-out;
+        }
+        .bow-left {
+            transform-origin: right center;
+        }
+        .bow-right {
+            transform-origin: left center;
+        }
+
         .container {
             display: none;
             margin-top: 50px;
@@ -100,23 +115,27 @@
 </head>
 <body>
     <div class="gift-wrap" id="giftWrap">
-        <div class="left-half"></div>
-        <div class="right-half"></div>
+        <div class="left-half" id="leftHalf">
+            <img class="bow-left" id="bowLeft" src="bow-left.png" alt="Left Bow">
+        </div>
+        <div class="right-half" id="rightHalf">
+            <img class="bow-right" id="bowRight" src="bow-right.png" alt="Right Bow">
+        </div>
         <div class="ribbon"></div>
-        <img class="bow" id="bow" src="bowiee.png" alt="Bow">
     </div>
     <div class="container" id="content">
         <h1>HAPPY BDAY FURKYYYY</h1>
         <img class="cake" src="bluecaket.png" alt="Birthday Cake">
         <p>FINALLY 10, may Allah grant you a long, healthy, and righteous life upon the deen, ameen!! </p>
         <p>We love you so much wallah. </p>
-        <button class="btn" onclick="startConfetti()">Click for a Surprise!</button>
+        <button class="btn" onclick="startConfetti()">Click for confetti!</button>
     </div>
     <script>
         setTimeout(() => {
-            document.getElementById("bow").style.opacity = "0"; // Bow fades out
-            document.querySelector(".left-half").style.transform = "translateX(-100%)"; // Left side moves left
-            document.querySelector(".right-half").style.transform = "translateX(100%)"; // Right side moves right
+            document.getElementById("leftHalf").style.transform = "translateX(-100%)"; // Left side moves left
+            document.getElementById("rightHalf").style.transform = "translateX(100%)"; // Right side moves right
+            document.getElementById("bowLeft").style.transform = "translateX(-100%)"; // Bow left moves left
+            document.getElementById("bowRight").style.transform = "translateX(100%)"; // Bow right moves right
 
             setTimeout(() => {
                 document.getElementById("giftWrap").style.display = "none";
