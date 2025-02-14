@@ -43,9 +43,9 @@
             position: absolute;
             width: 600px; /* Bow is now 2x bigger */
             height: auto;
-            top: 50%; /* Vertically centered */
-            left: 50%; /* Horizontally centered */
-            transform: translate(-50%, -50%); /* Adjust for exact centering */
+            top: calc(50% - 150px); /* Moves bow above the ribbon */
+            left: 50%;
+            transform: translate(-50%, -50%); /* Centers the bow horizontally and vertically */
             z-index: 20; /* Ensures bow is above ribbon */
         }
         .container {
@@ -95,7 +95,7 @@
     <div class="gift-wrap" id="giftWrap">
         <div class="ribbon"></div>
         <img class="bow" src="bowiee.png" alt="Bow">
-   </div>
+    </div>
     <div class="container" id="content">
         <h1>HAPPY BDAY FURKYYYY</h1>
         <img class="cake" src="bluecaket.png" alt="Birthday Cake">
