@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Press Start 2P', cursive;
+            background-color: #ffe6f2;
+            margin: 0;
+            padding: 0;
+            image-rendering: pixelated;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            font-size: 2rem;
+            color: #ff66b2;
+            animation: bounce 1.5s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .cake {
+            width: 150px;
+            height: auto;
+            margin-top: 20px;
+            image-rendering: pixelated;
+        }
+        .btn {
+            background-color: #ff99cc;
+            border: 3px solid #ff66b2;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-family: 'Press Start 2P', cursive;
+            text-shadow: 2px 2px #ff3366;
+        }
+        .btn:hover {
+            background-color: #ff66b2;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Birthday, Little Bro! 🎉🎂</h1>
+        <img class="cake" src="https://cdn.pixabay.com/photo/2016/04/01/09/48/birthday-cake-1297071_1280.png" alt="Birthday Cake">
+        <p>Wishing you all the happiness and fun on your special day!</p>
+        <button class="btn" onclick="alert('Have an amazing birthday! 🎉')">Click for a Surprise!</button>
+    </div>
+</body>
+</html>
