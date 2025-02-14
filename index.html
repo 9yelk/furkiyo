@@ -23,8 +23,8 @@
             justify-content: center;
             align-items: center;
             z-index: 10;
+            transition: all 1.5s ease-in-out;
             flex-direction: column;
-            transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
         }
         .ribbon {
             position: absolute;
@@ -37,16 +37,16 @@
             );
             top: 50%;
             transform: translateY(-50%);
-            z-index: 10; /* Behind the bow */
+            image-rendering: pixelated;
         }
-        .bow-container {
+        .bow {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 75px; /* Half of original size */
+            width: 300px; /* Normal-sized bow */
             height: auto;
+            top: calc(50% - 100px); /* Moves bow above the ribbon */
+            left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 20; /* Higher than ribbon */
+            z-index: 20; /* Ensures bow is above ribbon */
         }
         .container {
             display: none;
@@ -66,7 +66,8 @@
             }
         }
         .cake {
-            width: 600px; /* Large cake */
+            width: 90vw;
+            max-width: 0px;
             height: auto;
             margin-top: 20px;
             image-rendering: pixelated;
@@ -86,65 +87,36 @@
         .btn:hover {
             background-color: #0066cc;
         }
-        @keyframes shrinkOut {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(0); opacity: 0; }
-        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2"></script>
 </head>
 <body>
     <div class="gift-wrap" id="giftWrap">
         <div class="ribbon"></div>
-        <div class="bow-container">
-            <img class="bow" src="bowiee.png" alt="Bow">
-        </div>
-    </div>
+        <img class="bow" src="bowiee.png" alt="Bow">
+   </div>
     <div class="container" id="content">
         <h1>HAPPY BDAY FURKYYYY</h1>
         <img class="cake" src="bluecaket.png" alt="Birthday Cake">
         <p>FINALLY 10, may Allah grant you a long, healthy, and righteous life upon the deen, ameen!! </p>
         <p>We love you so much wallah. </p>
-        <button class="btn" onclick="showConfetti()">Click for no reason</button>
+        <p>AND I MIST U SO MUCH FURCUTIE, WE'LL DEF TALK SOMETIME SOON, TAKE CARE VE SEN TATLICIK :)) </p>
+        <button class="btn" onclick="startConfetti()">Click for confetti!</button>
     </div>
     <script>
-        function showConfetti() {
-            const confettiContainer = document.createElement("div");
-            confettiContainer.style.position = "fixed";
-            confettiContainer.style.width = "100%";
-            confettiContainer.style.height = "100%";
-            confettiContainer.style.top = "0";
-            confettiContainer.style.left = "0";
-            confettiContainer.style.pointerEvents = "none";
-            confettiContainer.style.overflow = "hidden";
-            document.body.appendChild(confettiContainer);
-
-            for (let i = 0; i < 100; i++) {
-                const confetti = document.createElement("div");
-                confetti.style.position = "absolute";
-                confetti.style.width = "10px";
-                confetti.style.height = "10px";
-                confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                confetti.style.top = `${Math.random() * 100}vh`;
-                confetti.style.left = `${Math.random() * 100}vw`;
-                confetti.style.opacity = Math.random();
-                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
-                confetti.style.animation = "falling 2s linear infinite";
-                confettiContainer.appendChild(confetti);
-            }
-        }
-
         setTimeout(() => {
-            let giftWrap = document.getElementById("giftWrap");
-
-            // Shrinking and fading animation
-            giftWrap.style.animation = "shrinkOut 1.5s forwards";
-
-            setTimeout(() => {
-                giftWrap.style.display = "none";
-                document.getElementById("content").style.display = "block";
-            }, 1500);
+            document.getElementById("giftWrap").style.transform = "scale(0)";
+            document.getElementById("content").style.display = "block";
         }, 2000);
+
+        function startConfetti() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
     </script>
 </body>
 </html>
