@@ -23,9 +23,19 @@
             justify-content: center;
             align-items: center;
             z-index: 10;
-            transition: all 1.5s ease-in-out;
-            flex-direction: column;
+            transition: transform 1.5s ease-in-out;
         }
+        .left-half, .right-half {
+            position: fixed;
+            width: 50%;
+            height: 100%;
+            top: 0;
+            background-color: #4a90e2;
+            transition: transform 1.5s ease-in-out;
+        }
+        .left-half { left: 0; }
+        .right-half { right: 0; }
+
         .ribbon {
             position: absolute;
             width: 100%;
@@ -41,12 +51,13 @@
         }
         .bow {
             position: absolute;
-            width: 300px; /* Normal-sized bow */
+            width: 400px;
             height: auto;
-            top: 45%;
+            top: calc(50% - 25px);
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
             z-index: 20;
+            transition: opacity 1s ease-in-out;
         }
         .container {
             display: none;
@@ -58,16 +69,12 @@
             animation: bounce 1.5s infinite;
         }
         @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         .cake {
-            width: 90vw; /* Dynamically scales with the screen */
-            max-width: 1000px; /* Limits max size */
+            width: 90vw;
+            max-width: 800px;
             height: auto;
             margin-top: 20px;
             image-rendering: pixelated;
@@ -93,8 +100,10 @@
 </head>
 <body>
     <div class="gift-wrap" id="giftWrap">
+        <div class="left-half"></div>
+        <div class="right-half"></div>
         <div class="ribbon"></div>
-        <img class="bow" src="bowiee.png" alt="Bow">
+        <img class="bow" id="bow" src="bowiee.png" alt="Bow">
     </div>
     <div class="container" id="content">
         <h1>HAPPY BDAY FURKYYYY</h1>
@@ -105,8 +114,14 @@
     </div>
     <script>
         setTimeout(() => {
-            document.getElementById("giftWrap").style.transform = "scale(0)";
-            document.getElementById("content").style.display = "block";
+            document.getElementById("bow").style.opacity = "0"; // Bow fades out
+            document.querySelector(".left-half").style.transform = "translateX(-100%)"; // Left side moves left
+            document.querySelector(".right-half").style.transform = "translateX(100%)"; // Right side moves right
+
+            setTimeout(() => {
+                document.getElementById("giftWrap").style.display = "none";
+                document.getElementById("content").style.display = "block";
+            }, 1500);
         }, 2000);
 
         function startConfetti() {
