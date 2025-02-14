@@ -18,7 +18,7 @@
             position: fixed;
             width: 100%;
             height: 100%;
-            background-color: #4a90e2;
+            background-color: #4a90e2; /* Darker blue background */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -35,19 +35,20 @@
                 #cce6ff 0px, #cce6ff 10px,
                 #99ccff 10px, #99ccff 20px
             );
-            top: calc(50% + 50px); /* Moves ribbon down below the bow */
+            top: 50%; /* Keeps it aligned with the bow */
             transform: translateY(-50%);
             image-rendering: pixelated;
-            z-index: 10; /* Ribbon behind the bow */
+            z-index: 10; /* Behind the bow */
         }
-        .bow {
+        .bow-container {
             position: absolute;
-            width: 600px; /* Bow is now 2x bigger */
-            height: auto;
-            top: calc(50% - 100px); /* Moves the bow above the center of the ribbon */
+            top: 50%; /* Same Y position as ribbon */
             left: 50%;
-            transform: translate(-50%, -50%); /* Centers the bow horizontally and vertically */
-            z-index: 20; /* Ensures the bow is on top of the ribbon */
+            width: 300px;
+            height: auto;
+            transform: translate(-50%, -50%);
+            display: flex;
+            z-index: 20; /* Higher than ribbon */
         }
         .container {
             display: none;
@@ -67,8 +68,7 @@
             }
         }
         .cake {
-            width: 90vw;
-            max-width: 900px;
+            width: 600px; /* Enlarged cake size */
             height: auto;
             margin-top: 20px;
             image-rendering: pixelated;
@@ -90,34 +90,56 @@
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2"></script>
 </head>
 <body>
     <div class="gift-wrap" id="giftWrap">
-        <img class="bow" src="bowiee.png" alt="Bow">
         <div class="ribbon"></div>
+        <div class="bow-container">
+            <img class="bow" src="bowiee.png" alt="Bow">
+        </div>
     </div>
     <div class="container" id="content">
         <h1>HAPPY BDAY FURKYYYY</h1>
         <img class="cake" src="bluecaket.png" alt="Birthday Cake">
         <p>FINALLY 10, may Allah grant you a long, healthy, and righteous life upon the deen, ameen!! </p>
         <p>We love you so much wallah. </p>
-        <p>AND I MIST U SO MUCH FURCUTIE, WE'LL DEF TALK SOMETIME SOON, TAKE CARE VE SEN TATLICIK :)) </p>
-        <button class="btn" onclick="startConfetti()">Click for confetti!</button>
+        <button class="btn" onclick="showConfetti()">Click for confetti!</button>
     </div>
     <script>
-        setTimeout(() => {
-            document.getElementById("giftWrap").style.transform = "scale(0)";
-            document.getElementById("content").style.display = "block";
-        }, 2000);
+        function showConfetti() {
+            const confettiContainer = document.createElement("div");
+            confettiContainer.style.position = "fixed";
+            confettiContainer.style.width = "100%";
+            confettiContainer.style.height = "100%";
+            confettiContainer.style.top = "0";
+            confettiContainer.style.left = "0";
+            confettiContainer.style.pointerEvents = "none";
+            confettiContainer.style.overflow = "hidden";
+            document.body.appendChild(confettiContainer);
 
-        function startConfetti() {
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 }
-            });
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement("div");
+                confetti.style.position = "absolute";
+                confetti.style.width = "10px";
+                confetti.style.height = "10px";
+                confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.top = `${Math.random() * 100}vh`;
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.opacity = Math.random();
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                confetti.style.animation = "falling 2s linear infinite";
+                confettiContainer.appendChild(confetti);
+            }
         }
+
+        setTimeout(() => {
+            document.getElementById("giftWrap").style.transition = "transform 1.5s ease-in-out";
+            document.getElementById("giftWrap").style.transform = "translateX(-100vw) translateY(-100vh)";
+            setTimeout(() => {
+                document.getElementById("giftWrap").style.display = "none";
+                document.getElementById("content").style.display = "block";
+            }, 1500);
+        }, 2000);
     </script>
 </body>
 </html>
