@@ -41,9 +41,9 @@
         }
         .bow {
             position: absolute;
-            width: 1200px;
+            width: 300px; /* Normal-sized bow */
             height: auto;
-            top: 40%;
+            top: 45%;
             left: 50%;
             transform: translateX(-50%);
             z-index: 20;
@@ -66,7 +66,8 @@
             }
         }
         .cake {
-            width: 1500px; /* 10x larger */
+            width: 90vw; /* Dynamically scales with the screen */
+            max-width: 1000px; /* Limits max size */
             height: auto;
             margin-top: 20px;
             image-rendering: pixelated;
